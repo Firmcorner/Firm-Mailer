@@ -1,8 +1,11 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { Suspense } from "react";
 import { Navbar } from "@/components/Navbar";
 import "./globals.css";
+import Analytics from "../components/Analytics"; // Add Analytics component
 
 // Configure Inter font
 const inter = Inter({
@@ -109,6 +112,22 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_MEASUREMENT_ID"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'YOUR_GA4_MEASUREMENT_ID', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+
         <header className="sr-only">
           <h1>
             Best Bulk Email Sender - Professional Mass Email Marketing Tool
@@ -141,6 +160,10 @@ export default function RootLayout({
             businesses.
           </p>
         </footer>
+
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );
