@@ -128,11 +128,7 @@ const PasswordSaveModal: React.FC<PasswordSaveModalProps> = ({
               <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm text-blue-800">
                 <p className="font-medium mb-1">Security Note:</p>
-                <p>
-                  Your password will be stored securely in your browser's local
-                  storage and will only be accessible from this device and
-                  browser.
-                </p>
+                <p>Your password is stored locally on this device only.</p>
               </div>
             </div>
           </div>
