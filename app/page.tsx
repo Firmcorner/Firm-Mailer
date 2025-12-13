@@ -38,6 +38,7 @@ import { sendBulkEmails } from "./actions";
 import { EmailTemplates } from "@/components/email-templates";
 import { EmailPreview } from "@/components/email-preview";
 import { SEOContent } from "@/components/seo-content";
+import SplashLoader from "@/components/splashloader";
 
 // Type definitions
 interface FormData {
@@ -1012,6 +1013,8 @@ const FirmMailer: React.FC = () => {
           {/* SEO Content */}
           <div className="w-full">
             <SEOContent />
+
+            <SplashLoader isOpen={sending} />
           </div>
         </div>
       </div>
