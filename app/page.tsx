@@ -40,6 +40,8 @@ import { EmailPreview } from "@/components/email-preview";
 import { SEOContent } from "@/components/seo-content";
 import SplashLoader from "@/components/splashloader";
 
+import { AIEmailGenerator } from "@/components/AiEmailGenerator";
+
 // Type definitions
 interface FormData {
   senderEmail: string;
@@ -649,6 +651,13 @@ const FirmMailer: React.FC = () => {
                         value={formData.emailBody}
                         onChange={(e) =>
                           handleInputChange("emailBody", e.target.value)
+                        }
+                      />
+                    </div>
+                    <div className="mt-4">
+                      <AIEmailGenerator
+                        onEmailGenerated={(email) =>
+                          handleInputChange("emailBody", email)
                         }
                       />
                     </div>
